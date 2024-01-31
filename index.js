@@ -4,11 +4,10 @@ import pg from 'pg';
 
 const db=new pg.Client(
     {
-        host:"localhost",
-        port: 5432,
-        password:"Abhi",
-        user:'postgres',
-        database:'ToDoList'
+        connectionString:"postgres://nctttbyw:3f4EwKwgBJIfgw_bY74P-QMV201npTZ0@arjuna.db.elephantsql.com/nctttbyw",
+        password:"3f4EwKwgBJIfgw_bY74P-QMV201npTZ0",
+        user:'nctttbyw',
+        
     }
 )
 db.connect()
