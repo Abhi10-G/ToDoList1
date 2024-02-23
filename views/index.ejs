@@ -4,22 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+       body {
+  font-family: sans-serif;
+  background-color: #e7ebee;
+  color: rgb(100, 77, 164);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+}
+
+.header {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 24px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-button {
+  background-color: #007bff;
+  color: rgb(73, 53, 123);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-item-text {
+  flex: 1;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+    </style>
 </head>
 <body>
-    <h1>ToDO List</h1>
+
+    <div class="todoList">
+        <h1>ToDo List</h1>
     <form action="/add" method="post">
-        <label for="todo">Enter your TODO</label>
-        <input type="text" id="todo" name="todo"/>
-        <button type="submit">Add</button>
+        <label for="todo"></label>
+        <input type="text" id="todo" name="todo" placeholder="Task to be done..."/>
+        <button type="submit">Add Task</button>
     </form>
     <ul>
-        <% for(var i = 0 ; i < todos.length ; i++) { %>
-        <li>
+        <% for(var i = 0; i < todos.length; i++) { %>
+          <li>
             <%= todos[i].task %>
-        </li>
+            <!-- Delete Action -->
+            <form action="/delete" method="post" style="display: inline;">
+              <input type="hidden" name="todo" value="<%= todos[i].id %>" />
+              <button type="submit">Task Completed</button>
+            </form>
+          </li>
         <% } %>
-
-    </ul>
+      </ul>
+   
+</div>
  
 </body>
 </html>

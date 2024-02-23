@@ -27,6 +27,12 @@ server.post("/add", async (req, res) => {
     res.redirect('/')
   })
 
+  server.post("/delete", async (req, res) => {
+    const id = req.body.todo
+    await db.query(`DELETE FROM todo WHERE id = ${id}`);
+    res.redirect('/');
+});
+
 server.listen(3000,()=>
 {
     console.log("Server Started");
